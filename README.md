@@ -20,7 +20,7 @@ Ein modernes, mobilfreundliches und didaktisch fundiertes Web-Trainingsprogramm 
    - **4. (u-) Deklination:** Maskulina & Neutra (z.B. *senatus, exercitus* / *cornu*)
    - **5. (e-) Deklination:** (z.B. *res, dies, spes, fides*)
 2. **Kategori-Auswahl vor Rundenstart:** Du entscheidest selbst, welche Deklinationsklassen du in der 10-Fragen-Runde üben möchtest.
-3. **15-Sekunden-Timer & Joker:** Dynamischer Countdown pro Frage mit 1 strategischen **Passen-Recht** (ohne Punktabzug).
+3. **30-Sekunden-Timer & Joker:** Dynamischer Countdown pro Frage mit 1 strategischen **Passen-Recht** (ohne Punktabzug).
 4. **Lehrer-Feedback & didaktische Analyse:**
    - Sofortige Begründung mit Merksätzen (*Neutrum-Gesetz*, *i-Stamm Besonderheiten*, *Genitiv als Stammform*).
    - Detaillierte Auswertung am Rundenende mit Erkennung von Wissenslücken.

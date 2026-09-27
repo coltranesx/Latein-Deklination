@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Spielzustand ---
     const TOTAL_QUESTIONS = 10;
-    const TIME_PER_QUESTION = 15;
+    const TIME_PER_QUESTION = 30;
 
     let selectedGroupIds = [];
     let currentQuestions = [];
@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (timeLeft <= 5) {
                 timerBar.style.backgroundColor = "#e74c3c";
-            } else if (timeLeft <= 8) {
+            } else if (timeLeft <= 10) {
                 timerBar.style.backgroundColor = "#f39c12";
             }
 

@@ -7,7 +7,7 @@ Bu proje, Almanya'daki Gymnasium 8. sınıf Latince müfredatına tam uyumlu ola
 ### Temel Özellikler
 1. **Dinamik Soru Motoru:** Seçilen kategorilere göre her turda 10 adet rastgele ve pedagojik soru üretir.
 2. **Kapsamlı Veritabanı:** a-Deklination, o-Deklination (m./n.), 3. Deklination (Konsonantisch & i-Stamm / Mischstamm), 4. Deklination (u) ve 5. Deklination (e) gruplarını tam kapsar.
-3. **Akıllı Puanlama & Pas Hakkı:** Her doğru cevap +10 puan, her yanlış cevap -5 puan, 15 saniye zamanlayıcı ve 1 adet pass geçme hakkı.
+3. **Akıllı Puanlama & Pas Hakkı:** Her doğru cevap +10 puan, her yanlış cevap -5 puan, 30 saniye zamanlayıcı ve 1 adet pass geçme hakkı.
 4. **Detaylı Öğretmen Analizi:** Her soruda anında kurallı açıklama (Neutrum kuralı, i-Stamm -ium hatırlatmaları) ve tur sonunda zayıf olunan deklinasyonun tespiti.
 5. **Modern Dark & Light Tema:** Latein-Practice 1.1 ile birebir aynı estetik, renk paleti ve ses efektleri (`ambient`, `click`, `correct`, `wrong`, `end`).
 6. **Uzman Latince Eğitmen Ajanı:** `latin-expert-tutor` alt ajanı projeye tanımlandı.
