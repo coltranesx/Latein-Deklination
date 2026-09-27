@@ -33,10 +33,10 @@ Ein modernes, mobilfreundliches und didaktisch fundiertes Web-Trainingsprogramm 
 
 ## 🚀 Live Demo / GitHub Pages
 
-Die Anwendung benötigt keinen Server und kann direkt über **GitHub Pages** betrieben werden:
-1. Im GitHub-Repository auf **Settings ➔ Pages** gehen.
-2. Branch **`main`** und Verzeichnis **`/ (root)`** auswählen.
-3. Auf **Save** klicken – die Seite ist in wenigen Sekunden weltweit erreichbar.
+Die Anwendung ist online live verfügbar unter:  
+👉 **[https://coltranesx.github.io/Latein-Deklination/](https://coltranesx.github.io/Latein-Deklination/)**
+
+GitHub Pages ist für dieses Repository bereits eingerichtet und einsatzbereit.
 
 ---
 
