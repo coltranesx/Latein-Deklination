@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latein Deklinationstrainer • Gymnasium Klasse 8</title>
+    <link rel="icon" type="image/webp" href="iconLeave.webp">
+    <link rel="stylesheet" href="style.css?v=2.0">
+</head>
+<body>
+    <div class="container">
+        <!-- Top Controls: Tema ve Ses Yönetimi -->
+        <div class="top-controls">
+            <button id="theme-toggle-btn" class="btn-icon-top" title="Design wechseln" aria-label="Design wechseln">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+            </button>
+            <button id="music-toggle-btn" class="btn-icon-top" title="Ton an/aus" aria-label="Ton an/aus">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Ekran 1: Başlangıç Ekranı -->
+        <div id="welcome-screen">
+            <h1>Latein Deklination</h1>
+            <h2>Gymnasium Klasse 8 • Training & Prüfungsvorbereitung</h2>
+            
+            <div class="welcome-info">
+                <p><strong>🏛️ Willkommen beim Deklinations-Coach!</strong></p>
+                <p>Trainiere gezielt lateinische Substantive aller wichtigen Deklinationsklassen:</p>
+                <ul>
+                    <li>a- & o-Deklination (Maskulina, Feminina & Neutra)</li>
+                    <li>3. Deklination (Konsonantische Stämme, i-Stämme & Mischstämme)</li>
+                    <li>4. (u-) & 5. (e-) Deklination</li>
+                </ul>
+            </div>
+
+            <button id="start-btn" class="btn">Training starten</button>
+            <button id="help-btn" class="btn btn-secondary">Regeln & Formentabelle</button>
+        </div>
+
+        <!-- Ekran 2: Deklinasyon Grubu Seçim Ekranı -->
+        <div id="selection-screen" class="hidden">
+            <h2>Deklinationen auswählen</h2>
+            <p class="selection-info">Wähle die Gruppen aus, die du in dieser Runde trainieren möchtest.</p>
+            
+            <div class="selection-toolbar">
+                <button id="select-all-btn" class="btn-text-action">Alle auswählen</button>
+            </div>
+
+            <div id="group-list-options">
+                <!-- JavaScript ile dinamik olarak doldurulur -->
+            </div>
+
+            <button id="start-practice-btn" class="btn" disabled>Runde starten (10 Fragen)</button>
+        </div>
+
+        <!-- Ekran 3: Soru / Oyun Ekranı -->
+        <div id="game-screen" class="hidden">
+            <div id="game-header">
+                <div class="hud-left">
+                    <button id="exit-btn" class="btn-icon" title="Runde beenden" aria-label="Runde beenden">
+                        <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <div class="score-badge">
+                        <span class="score-label">Punkte:</span>
+                        <span id="score" class="score-val">0</span>
+                    </div>
+                </div>
+
+                <div class="hud-center">
+                    <div class="question-pill">
+                        <span class="question-label">Frage</span>
+                        <span id="question-counter" class="question-num">1 / 10</span>
+                    </div>
+                </div>
+
+                <div class="hud-right-spacer" aria-hidden="true"></div>
+            </div>
+
+            <!-- Zamanlayıcı Çubuğu -->
+            <div id="timer-container"><div id="timer-bar"></div></div>
+
+            <!-- Soru Alanı -->
+            <div>
+                <span id="question-type-badge" class="question-category-badge">Formenbildung</span>
+            </div>
+            <h3 id="question-title">Wie lautet die gesuchte Form?</h3>
+            <h2 id="question-word">dominus</h2>
+            <div id="question-subtext">(domini m. • Herr / Efendi)</div>
+
+            <!-- Şıklar (4 Adet) -->
+            <div id="answer-buttons">
+                <button class="btn btn-answer"></button>
+                <button class="btn btn-answer"></button>
+                <button class="btn btn-answer"></button>
+                <button class="btn btn-answer"></button>
+            </div>
+
+            <!-- Açıklama ve Geri Bildirim Kutusu -->
+            <div id="feedback-box" class="hidden">
+                <h4 id="feedback-title"></h4>
+                <p id="feedback-text"></p>
+            </div>
+
+            <!-- Alt Aksiyonlar (Passen ve Nächste Frage) -->
+            <div class="bottom-actions">
+                <button id="pass-btn" class="btn">Passen (1)</button>
+                <button id="next-btn" class="btn hidden">Nächste Frage ➔</button>
+            </div>
+        </div>
+
+        <!-- Ekran 4: Sonuç Ekranı -->
+        <div id="score-screen" class="hidden">
+            <h2>Runde beendet!</h2>
+            <h2 id="congrats-message" class="congrats-message">Glückwunsch!</h2>
+            
+            <div class="score-summary-card">
+                <p class="final-score-text">Gesamtpunktzahl</p>
+                <p id="final-score">0</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card stat-correct">
+                        <span class="stat-label">Richtig</span>
+                        <span class="stat-value" id="stat-correct">0</span>
+                    </div>
+                    <div class="stat-card stat-wrong">
+                        <span class="stat-label">Falsch</span>
+                        <span class="stat-value" id="stat-wrong">0</span>
+                    </div>
+                    <div class="stat-card stat-passed">
+                        <span class="stat-label">Pass/Zeit</span>
+                        <span class="stat-value" id="stat-passed">0</span>
+                    </div>
+                    <div class="stat-card stat-accuracy">
+                        <span class="stat-label">Erfolg</span>
+                        <span class="stat-value" id="stat-accuracy">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analiz Raporu & Öğretmen Değerlendirmesi -->
+            <div id="analysis-report" class="analysis-section">
+                <h3>Ergebnis-Analyse & Lehrer-Tipp</h3>
+                <div id="teacher-feedback" class="teacher-verdict-box">
+                    Hervorragende Leistung!
+                </div>
+                <div id="analysis-list" class="analysis-list">
+                    <!-- Dinamik olarak JS ile doldurulacak -->
+                </div>
+            </div>
+
+            <button id="restart-btn" class="btn">Nochmal spielen</button>
+        </div>
+    </div>
+    
+    <!-- Yardım Penceresi & Spickzettel (Modal) -->
+    <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Spielregeln & Formenlehre</h3>
+            <p>- <strong>10 Fragen</strong> pro Runde, basierend auf deinen gewählten Deklinationsgruppen.</p>
+            <p>- Du hast <strong>15 Sekunden</strong> Zeit pro Frage.</p>
+            <p>- <strong>Richtige Antwort:</strong> +10 Punkte</p>
+            <p>- <strong>Falsche Antwort:</strong> -5 Punkte (Punktzahl fällt nicht unter 0)</p>
+            <p>- Wenn die Zeit abläuft, gibt es 0 Punkte.</p>
+            <p>- Du kannst 1 Frage pro Runde mit <strong>Passen</strong> straffrei überspringen.</p>
+
+            <h4>Deklinations-Übersicht (Endungen)</h4>
+            <div class="grammar-table-wrap">
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Kasus</th>
+                            <th>a-Dekl.</th>
+                            <th>o-Dekl. (m/n)</th>
+                            <th>3. Dekl. (m/f/n)</th>
+                            <th>4. (u-)</th>
+                            <th>5. (e-)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Nom. Sg.</td><td>-a</td><td>-us / -um</td><td>verschieden</td><td>-us / -u</td><td>-es</td></tr>
+                        <tr><td>Gen. Sg.</td><td>-ae</td><td>-i</td><td>-is</td><td>-us</td><td>-ei</td></tr>
+                        <tr><td>Dat. Sg.</td><td>-ae</td><td>-o</td><td>-i</td><td>-ui / -u</td><td>-ei</td></tr>
+                        <tr><td>Akk. Sg.</td><td>-am</td><td>-um</td><td>-em / Nom.</td><td>-um / -u</td><td>-em</td></tr>
+                        <tr><td>Abl. Sg.</td><td>-a</td><td>-o</td><td>-e (i: -i)</td><td>-u</td><td>-e</td></tr>
+                        <tr><td>Nom. Pl.</td><td>-ae</td><td>-i / -a</td><td>-es / -a (-ia)</td><td>-us / -ua</td><td>-es</td></tr>
+                        <tr><td>Gen. Pl.</td><td>-arum</td><td>-orum</td><td>-um (i: -ium)</td><td>-uum</td><td>-erum</td></tr>
+                        <tr><td>Dat. Pl.</td><td>-is</td><td>-is</td><td>-ibus</td><td>-ibus</td><td>-ebus</td></tr>
+                        <tr><td>Akk. Pl.</td><td>-as</td><td>-os / -a</td><td>-es / -a (-ia)</td><td>-us / -ua</td><td>-es</td></tr>
+                        <tr><td>Abl. Pl.</td><td>-is</td><td>-is</td><td>-ibus</td><td>-ibus</td><td>-ebus</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted);">
+                💡 <em>Merke:</em> Bei allen Neutra sind Nominativ und Akkusativ immer gleich! Im Plural enden Neutra immer auf <strong>-a</strong> (bzw. <strong>-ia</strong>).
+            </p>
+        </div>
+    </div>
+
+    <!-- Ses Efektleri -->
+    <audio id="ambient-sound" src="sounds/ambient.mp3" loop></audio>
+    <audio id="click-sound" src="sounds/click.mp3"></audio>
+    <audio id="correct-sound" src="sounds/correct.mp3"></audio>
+    <audio id="wrong-sound" src="sounds/wrong.mp3"></audio>
+    <audio id="end-sound" src="sounds/end.mp3"></audio>
+
+    <!-- Veri Dosyası ve Kütüphaneler -->
+    <script src="data/deklinationen.js"></script>
+    <script src="scripts/lottie.min.js"></script>
+    <script src="script.js?v=2.0"></script>
+    <div id="confetti-container" class="confetti-overlay hidden"></div>
+</body>
+</html>
