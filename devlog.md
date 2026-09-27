@@ -16,6 +16,14 @@ Bu proje, Almanya'daki Gymnasium 8. sınıf Latince müfredatına tam uyumlu ola
 
 ## Günlük / Versiyon Geçmişi
 
+### 2026-09-27 - v2.1 Pedagojik & Didaktik Revizyon (latin-expert-tutor Denetimi)
+- **Stamm Bütünlüğü (Zero Cross-Noun Contamination):** Şıkların alakasız başka kelimelerden gelmesi engellendi. Artık 4 şıkkın tamamı aynı kelimeden ve gerçek okul sınavı tuzaklarından türetiliyor.
+- **Tautolojik Soruların Kaldırılması:** Soru başlığında zaten verilen Nominativ Singular formunun sorulması engellendi.
+- **Öğrenci Tuzakları (Schülerfallen):** Nötr Akkusativ `-em`, i-Stamm Genitiv `-um`, -er gövdesi `agerum` gibi gerçek sınav çeldiricileri algoritmaya eklendi.
+- **Formenbestimmung Soru Tipi:** Verilen formun hangi Kasus/Numerus'a ait olduğunu bulma (KNG) soru tipi eklendi (Gymnasium sınavlarının %40'ı).
+- **Dilbilgisi Düzeltmeleri:** `fides` (singulare tantum) ve `spes` çoğul kısıtlamaları getirildi.
+- **Açıklama Metni Bug'ı Çözüldü:** `slice` kaynaklı kural açıklaması hataları giderildi.
+
 ### 2026-09-27 - v2.0 Tam Mimari ve Tasarım Yenilenmesi (Latein-Practice 1.1 Uyumu)
 - **Tasarım & UI Entegrasyonu:** Tek parça HTML'den modüler yapıya (`index.html`, `style.css`, `script.js`, `data/deklinationen.js`) geçildi. Latein-Practice 1.1'in tüm renk paleti, SVG ikonları, HUD başlığı ve Lottie konfeti kutlaması dahil edildi.
 - **Kategori Seçim Ekranı:** Oyuna başlamadan önce öğrencinin çalışmak istediği deklinasyonları seçebileceği ekran eklendi.
