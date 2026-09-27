@@ -60,62 +60,62 @@ rootScope.LATIN_CASES = [
 
 rootScope.LATIN_NOUNS = [
     // --- a-Deklination (f./m.) ---
-    { word: "amica", gen: "amicae", stem: "amic", gender: "f", group: "a_dekl", declName: "a-Deklination", german: "Freundin", turkish: "Kız arkadaş" },
-    { word: "puella", gen: "puellae", stem: "puell", gender: "f", group: "a_dekl", declName: "a-Deklination", german: "Mädchen", turkish: "Kız çocuk" },
-    { word: "rosa", gen: "rosae", stem: "ros", gender: "f", group: "a_dekl", declName: "a-Deklination", german: "Rose", turkish: "Gül" },
-    { word: "aqua", gen: "aquae", stem: "aqu", gender: "f", group: "a_dekl", declName: "a-Deklination", german: "Wasser", turkish: "Su" },
-    { word: "insula", gen: "insulae", stem: "insul", gender: "f", group: "a_dekl", declName: "a-Deklination", german: "Insel", turkish: "Ada" },
-    { word: "silva", gen: "silvae", stem: "silv", gender: "f", group: "a_dekl", declName: "a-Deklination", german: "Wald", turkish: "Orman" },
-    { word: "via", gen: "viae", stem: "vi", gender: "f", group: "a_dekl", declName: "a-Deklination", german: "Weg, Straße", turkish: "Yol, cadde" },
-    { word: "familia", gen: "familiae", stem: "famili", gender: "f", group: "a_dekl", declName: "a-Deklination", german: "Familie, Hausgemeinschaft", turkish: "Aile" },
-    { word: "pecunia", gen: "pecuniae", stem: "pecuni", gender: "f", group: "a_dekl", declName: "a-Deklination", german: "Geld, Vermögen", turkish: "Para, servet" },
-    { word: "nauta", gen: "nautae", stem: "naut", gender: "m", group: "a_dekl", declName: "a-Deklination", german: "Seemann (Maskulinum!)", turkish: "Denizci" },
+    { word: "amica", gen: "amicae", stem: "amic", gender: "f", group: "a_dekl", declName: "a-Deklination (f./m.)", german: "Freundin", turkish: "Kız arkadaş" },
+    { word: "puella", gen: "puellae", stem: "puell", gender: "f", group: "a_dekl", declName: "a-Deklination (f./m.)", german: "Mädchen", turkish: "Kız çocuk" },
+    { word: "rosa", gen: "rosae", stem: "ros", gender: "f", group: "a_dekl", declName: "a-Deklination (f./m.)", german: "Rose", turkish: "Gül" },
+    { word: "aqua", gen: "aquae", stem: "aqu", gender: "f", group: "a_dekl", declName: "a-Deklination (f./m.)", german: "Wasser", turkish: "Su" },
+    { word: "insula", gen: "insulae", stem: "insul", gender: "f", group: "a_dekl", declName: "a-Deklination (f./m.)", german: "Insel", turkish: "Ada" },
+    { word: "silva", gen: "silvae", stem: "silv", gender: "f", group: "a_dekl", declName: "a-Deklination (f./m.)", german: "Wald", turkish: "Orman" },
+    { word: "via", gen: "viae", stem: "vi", gender: "f", group: "a_dekl", declName: "a-Deklination (f./m.)", german: "Weg, Straße", turkish: "Yol, cadde" },
+    { word: "familia", gen: "familiae", stem: "famili", gender: "f", group: "a_dekl", declName: "a-Deklination (f./m.)", german: "Familie, Hausgemeinschaft", turkish: "Aile" },
+    { word: "pecunia", gen: "pecuniae", stem: "pecuni", gender: "f", group: "a_dekl", declName: "a-Deklination (f./m.)", german: "Geld, Vermögen", turkish: "Para, servet" },
+    { word: "nauta", gen: "nautae", stem: "naut", gender: "m", group: "a_dekl", declName: "a-Deklination (f./m.)", german: "Seemann (Maskulinum!)", turkish: "Denizci" },
 
     // --- o-Deklination (m.) ---
-    { word: "dominus", gen: "domini", stem: "domin", gender: "m", group: "o_dekl_m", declName: "o-Deklination (m)", german: "Herr, Hausherr", turkish: "Efendi, ev sahibi" },
-    { word: "servus", gen: "servi", stem: "serv", gender: "m", group: "o_dekl_m", declName: "o-Deklination (m)", german: "Sklave, Diener", turkish: "Köle, hizmetçi" },
-    { word: "amicus", gen: "amici", stem: "amic", gender: "m", group: "o_dekl_m", declName: "o-Deklination (m)", german: "Freund", turkish: "Erkek arkadaş" },
-    { word: "equus", gen: "equi", stem: "equ", gender: "m", group: "o_dekl_m", declName: "o-Deklination (m)", german: "Pferd", turkish: "At" },
-    { word: "filius", gen: "filii", stem: "fili", gender: "m", group: "o_dekl_m", declName: "o-Deklination (m)", german: "Sohn", turkish: "Erkek evlat" },
-    { word: "puer", gen: "pueri", stem: "puer", gender: "m", group: "o_dekl_m", declName: "o-Deklination (m)", german: "Junge, Knabe", turkish: "Erkek çocuk" },
-    { word: "ager", gen: "agri", stem: "agr", gender: "m", group: "o_dekl_m", declName: "o-Deklination (m)", german: "Acker, Feld", turkish: "Tarla, arazi" },
-    { word: "magister", gen: "magistri", stem: "magistr", gender: "m", group: "o_dekl_m", declName: "o-Deklination (m)", german: "Lehrer", turkish: "Öğretmen" },
-    { word: "vir", gen: "viri", stem: "vir", gender: "m", group: "o_dekl_m", declName: "o-Deklination (m)", german: "Mann", turkish: "Erkek, adam" },
+    { word: "dominus", gen: "domini", stem: "domin", gender: "m", group: "o_dekl_m", declName: "o-Deklination (Maskulina)", german: "Herr, Hausherr", turkish: "Efendi, ev sahibi" },
+    { word: "servus", gen: "servi", stem: "serv", gender: "m", group: "o_dekl_m", declName: "o-Deklination (Maskulina)", german: "Sklave, Diener", turkish: "Köle, hizmetçi" },
+    { word: "amicus", gen: "amici", stem: "amic", gender: "m", group: "o_dekl_m", declName: "o-Deklination (Maskulina)", german: "Freund", turkish: "Erkek arkadaş" },
+    { word: "equus", gen: "equi", stem: "equ", gender: "m", group: "o_dekl_m", declName: "o-Deklination (Maskulina)", german: "Pferd", turkish: "At" },
+    { word: "filius", gen: "filii", stem: "fili", gender: "m", group: "o_dekl_m", declName: "o-Deklination (Maskulina)", german: "Sohn", turkish: "Erkek evlat" },
+    { word: "puer", gen: "pueri", stem: "puer", gender: "m", group: "o_dekl_m", declName: "o-Deklination (Maskulina)", german: "Junge, Knabe", turkish: "Erkek çocuk" },
+    { word: "ager", gen: "agri", stem: "agr", gender: "m", group: "o_dekl_m", declName: "o-Deklination (Maskulina)", german: "Acker, Feld", turkish: "Tarla, arazi" },
+    { word: "magister", gen: "magistri", stem: "magistr", gender: "m", group: "o_dekl_m", declName: "o-Deklination (Maskulina)", german: "Lehrer", turkish: "Öğretmen" },
+    { word: "vir", gen: "viri", stem: "vir", gender: "m", group: "o_dekl_m", declName: "o-Deklination (Maskulina)", german: "Mann", turkish: "Erkek, adam" },
 
     // --- o-Deklination (n.) ---
-    { word: "templum", gen: "templi", stem: "templ", gender: "n", group: "o_dekl_n", declName: "o-Deklination (n)", german: "Tempel, Heiligtum", turkish: "Tapınak" },
-    { word: "oppidum", gen: "oppidi", stem: "oppid", gender: "n", group: "o_dekl_n", declName: "o-Deklination (n)", german: "Stadt, befestigte Siedlung", turkish: "Kasaba, hisar" },
-    { word: "donum", gen: "doni", stem: "don", gender: "n", group: "o_dekl_n", declName: "o-Deklination (n)", german: "Geschenk, Gabe", turkish: "Hediye" },
-    { word: "bellum", gen: "belli", stem: "bell", gender: "n", group: "o_dekl_n", declName: "o-Deklination (n)", german: "Krieg", turkish: "Savaş" },
-    { word: "verbum", gen: "verbi", stem: "verb", gender: "n", group: "o_dekl_n", declName: "o-Deklination (n)", german: "Wort", turkish: "Kelime, söz" },
-    { word: "periculum", gen: "periculi", stem: "pericul", gender: "n", group: "o_dekl_n", declName: "o-Deklination (n)", german: "Gefahr", turkish: "Tehlike" },
-    { word: "gaudium", gen: "gaudii", stem: "gaudi", gender: "n", group: "o_dekl_n", declName: "o-Deklination (n)", german: "Freude", turkish: "Sevinç" },
-    { word: "forum", gen: "fori", stem: "for", gender: "n", group: "o_dekl_n", declName: "o-Deklination (n)", german: "Marktplatz, Forum", turkish: "Meydan, forum" },
+    { word: "templum", gen: "templi", stem: "templ", gender: "n", group: "o_dekl_n", declName: "o-Deklination (Neutra)", german: "Tempel, Heiligtum", turkish: "Tapınak" },
+    { word: "oppidum", gen: "oppidi", stem: "oppid", gender: "n", group: "o_dekl_n", declName: "o-Deklination (Neutra)", german: "Stadt, befestigte Siedlung", turkish: "Kasaba, hisar" },
+    { word: "donum", gen: "doni", stem: "don", gender: "n", group: "o_dekl_n", declName: "o-Deklination (Neutra)", german: "Geschenk, Gabe", turkish: "Hediye" },
+    { word: "bellum", gen: "belli", stem: "bell", gender: "n", group: "o_dekl_n", declName: "o-Deklination (Neutra)", german: "Krieg", turkish: "Savaş" },
+    { word: "verbum", gen: "verbi", stem: "verb", gender: "n", group: "o_dekl_n", declName: "o-Deklination (Neutra)", german: "Wort", turkish: "Kelime, söz" },
+    { word: "periculum", gen: "periculi", stem: "pericul", gender: "n", group: "o_dekl_n", declName: "o-Deklination (Neutra)", german: "Gefahr", turkish: "Tehlike" },
+    { word: "gaudium", gen: "gaudii", stem: "gaudi", gender: "n", group: "o_dekl_n", declName: "o-Deklination (Neutra)", german: "Freude", turkish: "Sevinç" },
+    { word: "forum", gen: "fori", stem: "for", gender: "n", group: "o_dekl_n", declName: "o-Deklination (Neutra)", german: "Marktplatz, Forum", turkish: "Meydan, forum" },
 
     // --- 3. Deklination (Konsonantische Stämme m./f./n.) ---
-    { word: "rex", gen: "regis", stem: "reg", gender: "m", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "König", turkish: "Kral" },
-    { word: "miles", gen: "militis", stem: "milit", gender: "m", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "Soldat, Krieger", turkish: "Asker" },
-    { word: "consul", gen: "consulis", stem: "consul", gender: "m", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "Konsul", turkish: "Konsül" },
-    { word: "vox", gen: "vocis", stem: "voc", gender: "f", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "Stimme, Ausruf", turkish: "Ses" },
-    { word: "lux", gen: "lucis", stem: "luc", gender: "f", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "Licht", turkish: "Işık" },
-    { word: "laus", gen: "laudis", stem: "laud", gender: "f", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "Lob, Ruhm", turkish: "Övgü" },
-    { word: "corpus", gen: "corporis", stem: "corpor", gender: "n", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "Körper, Leib", turkish: "Vücut, gövde" },
-    { word: "tempus", gen: "temporis", stem: "tempor", gender: "n", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "Zeit, Zeitraum", turkish: "Zaman, mevsim" },
-    { word: "carmen", gen: "carminis", stem: "carmin", gender: "n", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "Lied, Gedicht", turkish: "Şiir, şarkı" },
-    { word: "flumen", gen: "fluminis", stem: "flumin", gender: "n", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "Fluss, Strom", turkish: "Nehir" },
-    { word: "caput", gen: "capitis", stem: "capit", gender: "n", group: "dritte_kons", declName: "3. Deklination (konsonantisch)", german: "Kopf, Hauptstadt", turkish: "Kafa, baş" },
+    { word: "rex", gen: "regis", stem: "reg", gender: "m", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "König", turkish: "Kral" },
+    { word: "miles", gen: "militis", stem: "milit", gender: "m", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "Soldat, Krieger", turkish: "Asker" },
+    { word: "consul", gen: "consulis", stem: "consul", gender: "m", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "Konsul", turkish: "Konsül" },
+    { word: "vox", gen: "vocis", stem: "voc", gender: "f", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "Stimme, Ausruf", turkish: "Ses" },
+    { word: "lux", gen: "lucis", stem: "luc", gender: "f", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "Licht", turkish: "Işık" },
+    { word: "laus", gen: "laudis", stem: "laud", gender: "f", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "Lob, Ruhm", turkish: "Övgü" },
+    { word: "corpus", gen: "corporis", stem: "corpor", gender: "n", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "Körper, Leib", turkish: "Vücut, gövde" },
+    { word: "tempus", gen: "temporis", stem: "tempor", gender: "n", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "Zeit, Zeitraum", turkish: "Zaman, mevsim" },
+    { word: "carmen", gen: "carminis", stem: "carmin", gender: "n", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "Lied, Gedicht", turkish: "Şiir, şarkı" },
+    { word: "flumen", gen: "fluminis", stem: "flumin", gender: "n", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "Fluss, Strom", turkish: "Nehir" },
+    { word: "caput", gen: "capitis", stem: "capit", gender: "n", group: "dritte_kons", declName: "3. Deklination (Konsonantisch)", german: "Kopf, Hauptstadt", turkish: "Kafa, baş" },
 
     // --- 3. Deklination (i-Stamm & Mischstamm) ---
-    { word: "civis", gen: "civis", stem: "civ", gender: "m", group: "dritte_i", declName: "3. Deklination (i-Stamm)", german: "Bürger, Mitbürger", turkish: "Vatandaş" },
-    { word: "navis", gen: "navis", stem: "nav", gender: "f", group: "dritte_i", declName: "3. Deklination (i-Stamm)", german: "Schiff", turkish: "Gemi" },
-    { word: "ignis", gen: "ignis", stem: "ign", gender: "m", group: "dritte_i", declName: "3. Deklination (i-Stamm)", german: "Feuer", turkish: "Ateş" },
-    { word: "hostis", gen: "hostis", stem: "host", gender: "m", group: "dritte_i", declName: "3. Deklination (i-Stamm)", german: "Feind (Landesfeind)", turkish: "Düşman" },
-    { word: "urbs", gen: "urbis", stem: "urb", gender: "f", group: "dritte_i", declName: "3. Deklination (Mischstamm)", german: "Stadt (oft Rom)", turkish: "Şehir, kent" },
-    { word: "nox", gen: "noctis", stem: "noct", gender: "f", group: "dritte_i", declName: "3. Deklination (Mischstamm)", german: "Nacht", turkish: "Gece" },
-    { word: "mors", gen: "mortis", stem: "mort", gender: "f", group: "dritte_i", declName: "3. Deklination (Mischstamm)", german: "Tod", turkish: "Ölüm" },
-    { word: "pars", gen: "partis", stem: "part", gender: "f", group: "dritte_i", declName: "3. Deklination (Mischstamm)", german: "Teil, Seite, Richtung", turkish: "Kısım, parça" },
-    { word: "mare", gen: "maris", stem: "mar", gender: "n", group: "dritte_i", declName: "3. Deklination (Neutrum i-Stamm)", german: "Meer", turkish: "Deniz", special: "neuter_i" },
-    { word: "animal", gen: "animalis", stem: "animal", gender: "n", group: "dritte_i", declName: "3. Deklination (Neutrum i-Stamm)", german: "Lebewesen, Tier", turkish: "Hayvan, canlı", special: "neuter_i" },
+    { word: "civis", gen: "civis", stem: "civ", gender: "m/f", group: "dritte_i", declName: "3. Deklination (i-Stamm & Mischstamm)", german: "Bürger, Bürgerin", turkish: "Vatandaş" },
+    { word: "navis", gen: "navis", stem: "nav", gender: "f", group: "dritte_i", declName: "3. Deklination (i-Stamm & Mischstamm)", german: "Schiff", turkish: "Gemi" },
+    { word: "ignis", gen: "ignis", stem: "ign", gender: "m", group: "dritte_i", declName: "3. Deklination (i-Stamm & Mischstamm)", german: "Feuer", turkish: "Ateş" },
+    { word: "hostis", gen: "hostis", stem: "host", gender: "m", group: "dritte_i", declName: "3. Deklination (i-Stamm & Mischstamm)", german: "Feind (Landesfeind)", turkish: "Düşman" },
+    { word: "urbs", gen: "urbis", stem: "urb", gender: "f", group: "dritte_i", declName: "3. Deklination (i-Stamm & Mischstamm)", german: "Stadt (oft Rom)", turkish: "Şehir, kent" },
+    { word: "nox", gen: "noctis", stem: "noct", gender: "f", group: "dritte_i", declName: "3. Deklination (i-Stamm & Mischstamm)", german: "Nacht", turkish: "Gece" },
+    { word: "mors", gen: "mortis", stem: "mort", gender: "f", group: "dritte_i", declName: "3. Deklination (i-Stamm & Mischstamm)", german: "Tod", turkish: "Ölüm" },
+    { word: "pars", gen: "partis", stem: "part", gender: "f", group: "dritte_i", declName: "3. Deklination (i-Stamm & Mischstamm)", german: "Teil, Seite, Richtung", turkish: "Kısım, parça" },
+    { word: "mare", gen: "maris", stem: "mar", gender: "n", group: "dritte_i", declName: "3. Deklination (i-Stamm & Mischstamm)", german: "Meer", turkish: "Deniz", special: "neuter_i" },
+    { word: "animal", gen: "animalis", stem: "animal", gender: "n", group: "dritte_i", declName: "3. Deklination (i-Stamm & Mischstamm)", german: "Lebewesen, Tier", turkish: "Hayvan, canlı", special: "neuter_i" },
 
     // --- 4. Deklination (u-Deklination) ---
     { word: "senatus", gen: "senatus", stem: "senat", gender: "m", group: "u_dekl", declName: "u-Deklination (4. Deklination)", german: "Senat, Ältestenrat", turkish: "Senato" },
@@ -127,8 +127,8 @@ rootScope.LATIN_NOUNS = [
     // --- 5. Deklination (e-Deklination) ---
     { word: "res", gen: "rei", stem: "r", gender: "f", group: "e_dekl", declName: "e-Deklination (5. Deklination)", german: "Sache, Ding, Angelegenheit", turkish: "Şey, olay, durum" },
     { word: "dies", gen: "diei", stem: "di", gender: "m", group: "e_dekl", declName: "e-Deklination (5. Deklination)", german: "Tag, Termin", turkish: "Gün" },
-    { word: "spes", gen: "spei", stem: "sp", gender: "f", group: "e_dekl", declName: "e-Deklination (5. Deklination)", german: "Hoffnung", turkish: "Umut" },
-    { word: "fides", gen: "fidei", stem: "fid", gender: "f", group: "e_dekl", declName: "e-Deklination (5. Deklination)", german: "Treue, Verlässlichkeit, Glaube", turkish: "Sadakat, güven" }
+    { word: "spes", gen: "spei", stem: "sp", gender: "f", group: "e_dekl", declName: "e-Deklination (5. Deklination)", german: "Hoffnung", turkish: "Umut", defectivePlural: true },
+    { word: "fides", gen: "fidei", stem: "fid", gender: "f", group: "e_dekl", declName: "e-Deklination (5. Deklination)", german: "Treue, Verlässlichkeit, Glaube", turkish: "Sadakat, güven", onlySingular: true }
 ];
 
 /**
@@ -136,6 +136,13 @@ rootScope.LATIN_NOUNS = [
  * Folgt streng den Regeln des Gymnasiums Klasse 6-8.
  */
 function getDeclinedForm(noun, caseName) {
+    if (noun.onlySingular && caseName.includes("Plural")) {
+        return null;
+    }
+    if (noun.defectivePlural && caseName.includes("Plural") && !caseName.includes("Nominativ") && !caseName.includes("Akkusativ")) {
+        return null;
+    }
+
     const stem = noun.stem;
     const isNeuter = noun.gender === "n";
     const group = noun.group;

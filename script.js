@@ -244,7 +244,79 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('latein_selected_groups', JSON.stringify(selectedGroupIds));
     }
 
-    // --- Fragengenerator (Algorithmus) ---
+    // --- Didaktische Hilfsfunktionen für Fragenerzeugung ---
+    function getPedagogicalExplanation(noun, targetCase, correctAns) {
+        let expl = `Das Wort gehört zur <strong>${noun.declName}</strong> (Stamm: <em>${noun.stem}-</em>). Die korrekte Form für <strong>${targetCase.name}</strong> lautet <strong>${correctAns}</strong>.`;
+        if (noun.gender === "n" && targetCase.name.includes("Akkusativ Singular")) {
+            expl += `<br>💡 <em>Neutrum-Regel:</em> Im Singular sind Nominativ und Akkusativ immer formgleich mit der Grundform (<em>${noun.word}</em>)!`;
+        } else if (noun.gender === "n" && targetCase.name.includes("Plural")) {
+            const ending = noun.special === "neuter_i" ? "-ia" : (noun.special === "u_neuter" ? "-ua" : "-a");
+            expl += `<br>💡 <em>Neutrum-Regel:</em> Im Plural enden Nominativ und Akkusativ bei Neutra immer auf <strong>${ending}</strong> (<em>${correctAns}</em>)!`;
+        } else if (noun.group === "dritte_i" && targetCase.name === "Genitiv Plural") {
+            expl += `<br>💡 <em>i-Stamm Regel:</em> Bei i-Stämmen und Mischstämmen endet der Genitiv Plural <strong>immer auf -ium</strong> (<em>${correctAns}</em>), niemals auf -um!`;
+        } else if (noun.group === "dritte_kons" && targetCase.name === "Genitiv Plural") {
+            expl += `<br>💡 <em>Konsonantische Regel:</em> Reine konsonantische Stämme enden im Genitiv Plural auf <strong>-um</strong> (<em>${correctAns}</em>)!`;
+        } else if (noun.word.endsWith("er") && noun.stem !== noun.word) {
+            expl += `<br>💡 <em>-er Stammregel:</em> Bei <em>${noun.word}</em> entfällt das -e- im Stamm (Genitiv: <em>${noun.gen}</em> ➔ Stamm: <em>${noun.stem}-</em> ➔ <em>${correctAns}</em>)!`;
+        } else if (noun.special === "neuter_i" && targetCase.name === "Ablativ Singular") {
+            expl += `<br>💡 <em>Neutrum i-Stamm:</em> Der Ablativ Singular reiner i-Neutra endet auf <strong>-i</strong> (<em>${correctAns}</em>), nicht auf -e!`;
+        }
+        return expl;
+    }
+
+    function generateFormDistractors(noun, targetCase, correctAns) {
+        const optionsSet = new Set([correctAns]);
+        const cases = window.LATIN_CASES || [];
+
+        // 1. Didaktische Schülerfallen (Typische gymnasiale Prüfungsfallen)
+        if (noun.gender === 'n' && targetCase.name.includes("Akkusativ Singular")) {
+            optionsSet.add(noun.stem + "em"); // Trap: corporem, carminem
+        }
+        if (noun.gender === 'n' && targetCase.name.includes("Plural")) {
+            optionsSet.add(noun.stem + "es"); // Trap: tempores, donos
+        }
+        if (noun.group === 'dritte_i' && targetCase.name === 'Genitiv Plural') {
+            optionsSet.add(noun.stem + "um"); // Trap: civum, urbum
+        }
+        if (noun.group === 'dritte_kons' && targetCase.name === 'Genitiv Plural') {
+            optionsSet.add(noun.stem + "ium"); // Trap: regium, militium
+        }
+        if (noun.word.endsWith("er") && noun.stem !== noun.word) {
+            optionsSet.add(noun.word + "um"); // Trap: agerum
+            optionsSet.add(noun.word + "o");  // Trap: agero
+        }
+        if (noun.special === 'neuter_i' && targetCase.name === 'Ablativ Singular') {
+            optionsSet.add(noun.stem + "e");  // Trap: mare statt mari
+        }
+        if (noun.group === 'u_dekl' && targetCase.name === 'Genitiv Singular') {
+            optionsSet.add(noun.stem + "i");  // Trap: senati statt senatus
+        }
+        if (noun.group === 'o_dekl_m' && targetCase.name === 'Genitiv Singular') {
+            optionsSet.add(noun.stem + "us"); // Trap: dominus statt domini
+        }
+
+        // 2. Echte Formen desselben Wortes aus anderen Kasus
+        cases.forEach(c => {
+            const f = getDeclinedForm(noun, c.name);
+            if (f && f !== correctAns) {
+                optionsSet.add(f);
+            }
+        });
+
+        // 3. Notfall-Generierung mit stammgleichen Suffixen
+        const fallbackEndings = ["is", "ibus", "as", "os", "am", "um", "e", "i", "o", "a", "es"];
+        for (let end of fallbackEndings) {
+            if (optionsSet.size >= 4) break;
+            optionsSet.add(noun.stem + end);
+        }
+
+        const distractorPool = Array.from(optionsSet).filter(o => o !== correctAns);
+        const shuffledDistractors = shuffleArray(distractorPool);
+        const finalOptions = shuffleArray([correctAns, ...shuffledDistractors.slice(0, 3)]);
+        return finalOptions;
+    }
+
+    // --- Fragengenerator (Algorithmus auf Gymnasial-Niveau) ---
     function generateQuestions() {
         const allNouns = window.LATIN_NOUNS || [];
         const filteredNouns = allNouns.filter(n => selectedGroupIds.includes(n.group));
@@ -259,35 +331,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (let i = 0; i < TOTAL_QUESTIONS; i++) {
             const noun = shuffledNouns[i % shuffledNouns.length];
-            // Typ 1: Formenbildung (70%), Typ 2: Deklinationsklasse (30%)
-            const qType = Math.random() < 0.7 ? 1 : 2;
+            // Typ 1: Formenbildung (50%), Typ 2: Formenbestimmung (30%), Typ 3: Deklinationsklasse (20%)
+            const randType = Math.random();
+            const qType = randType < 0.5 ? 1 : (randType < 0.8 ? 2 : 3);
 
             if (qType === 1) {
-                // Typ 1: Formenbildung
-                const targetCase = cases[Math.floor(Math.random() * cases.length)];
+                // Typ 1: Formenbildung (Nominativ Singular wird ausgeschlossen, da Wort schon vorgegeben)
+                let eligibleCases = cases.filter(c => c.name !== "Nominativ Singular");
+                if (noun.onlySingular) {
+                    eligibleCases = eligibleCases.filter(c => !c.name.includes("Plural"));
+                } else if (noun.defectivePlural) {
+                    eligibleCases = eligibleCases.filter(c => !c.name.includes("Plural") || c.name.includes("Akkusativ"));
+                }
+
+                const targetCase = eligibleCases[Math.floor(Math.random() * eligibleCases.length)];
                 const correctAns = getDeclinedForm(noun, targetCase.name);
-
-                // Distraktoren generieren (andere Kasus desselben Nomens oder ähnlicher Nomen)
-                const optionsSet = new Set([correctAns]);
-                let attempts = 0;
-                while (optionsSet.size < 4 && attempts < 40) {
-                    attempts++;
-                    const dummyCase = cases[Math.floor(Math.random() * cases.length)];
-                    const dummyNoun = Math.random() < 0.6 ? noun : filteredNouns[Math.floor(Math.random() * filteredNouns.length)];
-                    const distractor = getDeclinedForm(dummyNoun, dummyCase.name);
-                    if (distractor && distractor !== correctAns) {
-                        optionsSet.add(distractor);
-                    }
-                }
-                const options = shuffleArray(Array.from(optionsSet));
-
-                let explanation = `Das Wort gehört zur <strong>${noun.declName}</strong> (Stamm: <em>${noun.stem}-</em>). Die korrekte Endung für <strong>${targetCase.name}</strong> lautet <em>${correctAns.slice(noun.stem.length) || correctAns}</em>.`;
-                if (noun.gender === "n") {
-                    explanation += `<br>💡 <em>Neutrum-Regel:</em> Nominativ und Akkusativ sind formgleich!`;
-                }
-                if (noun.group === "dritte_i" && targetCase.name === "Genitiv Plural") {
-                    explanation += `<br>💡 <em>i-Stamm Merke:</em> Der Genitiv Plural endet auf <strong>-ium</strong>!`;
-                }
+                const options = generateFormDistractors(noun, targetCase, correctAns);
+                const explanation = getPedagogicalExplanation(noun, targetCase, correctAns);
 
                 questions.push({
                     type: "Formenbildung",
@@ -300,21 +360,75 @@ document.addEventListener('DOMContentLoaded', () => {
                     options: options,
                     explanation: explanation
                 });
-            } else {
-                // Typ 2: Deklinationsklasse bestimmen
-                const correctAns = noun.declName;
-                const allGroupNames = (window.LATIN_GROUPS || []).map(g => g.title);
+            } else if (qType === 2) {
+                // Typ 2: Formenbestimmung (Klassenarbeits-Klassiker: Welcher Kasus liegt vor?)
+                let candidateCases = cases.filter(c => c.name !== "Nominativ Singular");
+                if (noun.onlySingular) candidateCases = candidateCases.filter(c => !c.name.includes("Plural"));
+                
+                const sampleCase = candidateCases[Math.floor(Math.random() * candidateCases.length)];
+                const sampleForm = getDeclinedForm(noun, sampleCase.name);
 
-                const optionsSet = new Set([correctAns]);
-                let attempts = 0;
-                while (optionsSet.size < 4 && attempts < 20) {
-                    attempts++;
-                    const randGrp = allGroupNames[Math.floor(Math.random() * allGroupNames.length)];
-                    optionsSet.add(randGrp);
+                // Alle passenden Kasus für diese Form sammeln
+                const matchingCases = [];
+                cases.forEach(c => {
+                    if (getDeclinedForm(noun, c.name) === sampleForm) {
+                        matchingCases.push(c.abbr);
+                    }
+                });
+
+                const correctAns = matchingCases.join(" / ");
+
+                // Plausible alternative Kasus-Bündel als Distraktoren
+                const allCaseBundles = [
+                    "Nom. Sg.", "Gen. Sg.", "Dat. Sg.", "Akk. Sg.", "Abl. Sg.",
+                    "Nom. Pl.", "Gen. Pl.", "Dat. Pl.", "Akk. Pl.", "Abl. Pl.",
+                    "Nom. Pl. / Akk. Pl.", "Dat. Pl. / Abl. Pl.", "Dat. Sg. / Abl. Sg.",
+                    "Gen. Sg. / Nom. Pl.", "Gen. Sg. / Dat. Sg."
+                ];
+
+                const distractorSet = new Set();
+                const shuffledBundles = shuffleArray(allCaseBundles);
+                for (let b of shuffledBundles) {
+                    if (b !== correctAns) {
+                        distractorSet.add(b);
+                        if (distractorSet.size >= 3) break;
+                    }
                 }
-                const options = shuffleArray(Array.from(optionsSet));
 
-                const explanation = `Die Deklinationsklasse wird stets über den <strong>Genitiv Singular (${noun.gen})</strong> bestimmt, nicht allein über den Nominativ. Das Wort <em>${noun.word}</em> gehört zur <strong>${noun.declName}</strong>.`;
+                const options = shuffleArray([correctAns, ...Array.from(distractorSet)]);
+
+                let explanation = `Die Form <strong>${sampleForm}</strong> entspricht bei <em>${noun.word}</em> (${noun.declName}): <strong>${correctAns}</strong>.`;
+                if (noun.gender === "n" && sampleForm.endsWith("a")) {
+                    explanation += `<br>💡 <em>Neutrum-Regel:</em> Im Plural enden Nominativ und Akkusativ stets auf -a!`;
+                }
+
+                questions.push({
+                    type: "Formenbestimmung",
+                    category: noun.group,
+                    noun: noun,
+                    title: `Welche grammatische Bestimmung passt zu der Form:`,
+                    word: sampleForm,
+                    subtext: `(von ${noun.word}, ${noun.gen} ${noun.gender}. • ${noun.german} / ${noun.turkish})`,
+                    correct: correctAns,
+                    options: options,
+                    explanation: explanation
+                });
+            } else {
+                // Typ 3: Deklinationsklasse & Zweifelsfälle bestimmen
+                const correctAns = noun.declName;
+                const allGroupTitles = (window.LATIN_GROUPS || []).map(g => g.title);
+
+                const distractorSet = new Set();
+                const shuffledTitles = shuffleArray(allGroupTitles);
+                for (let t of shuffledTitles) {
+                    if (t !== correctAns) {
+                        distractorSet.add(t);
+                        if (distractorSet.size >= 3) break;
+                    }
+                }
+                const options = shuffleArray([correctAns, ...Array.from(distractorSet)]);
+
+                const explanation = `Die Deklinationsklasse wird stets über den <strong>Genitiv Singular (${noun.gen})</strong> bestimmt. Da dieser auf <em>-${noun.gen.slice(-2)}</em> endet, gehört <em>${noun.word}</em> zur <strong>${noun.declName}</strong>.`;
 
                 questions.push({
                     type: "Klassifikation",
